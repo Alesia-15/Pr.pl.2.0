@@ -1,229 +1,96 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privoz.pl — Redesign</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Демо кнопок</title>
   <style>
-    :root {
-      --orange: #ff9300;
-      --dark: #222;
-      --light: #ffffff;
-      --gray: #f3f4f6;
-      --radius: 16px;
-      --shadow: 0 4px 20px rgba(0,0,0,0.08);
-      --font: "Inter", sans-serif;
-    }
-
     body {
-      margin: 0;
-      font-family: var(--font);
-      background: var(--gray);
-      color: var(--dark);
+      font-family: Inter, sans-serif;
+      background: #f3f4f6;
+      padding: 40px;
+      color: #222;
     }
 
-    header {
-      background: var(--light);
-      padding: 14px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: var(--shadow);
-    }
-    header .logo img {
-      height: 46px;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 28px;
-      margin: 0;
-      padding: 0;
-    }
-    nav a {
-      text-decoration: none;
-      color: var(--dark);
-      font-weight: 600;
-      font-size: 14px;
-      text-transform: uppercase;
-    }
-    .languages a {
-      margin-left: 12px;
-      color: var(--orange);
-      font-weight: 600;
-    }
+    h2 { margin-top: 40px; }
 
-    /* HERO */
-    .hero {
-      display: flex;
-      justify-content: space-between;
-      padding: 60px 40px;
-      background: var(--light);
-      align-items: center;
-    }
-    .hero-text h1 {
-      font-size: 36px;
-      line-height: 1.2;
-      margin-bottom: 20px;
-      color: var(--orange);
-    }
-    .hero-text p {
-      font-size: 18px;
-      opacity: .8;
-      margin-bottom: 26px;
-    }
-    .btn {
-      padding: 14px 24px;
-      background: var(--orange);
+    /* Вариант 1 — Минимализм */
+    .btn-minimal {
+      padding: 14px 28px;
+      background: #ff9300;
       color: #fff;
-      text-decoration: none;
-      border-radius: var(--radius);
+      border-radius: 14px;
       font-weight: 600;
-      transition: 0.2s;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      box-shadow: 0 4px 12px rgba(255, 147, 0, 0.3);
+      transition: 0.25s;
       display: inline-block;
+      margin-right: 20px;
     }
-    .btn:hover { background: #cc7500; }
-
-    /* CATEGORIES */
-    .cats {
-      padding: 60px 40px;
-    }
-    .cats h2 {
-      font-size: 28px;
-      margin-bottom: 30px;
-      color: var(--orange);
-    }
-    .cats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 20px;
-    }
-    .cat-item {
-      background: white;
-      border-radius: var(--radius);
-      padding: 20px;
-      box-shadow: var(--shadow);
-      text-align: center;
-      transition: .2s;
-    }
-    .cat-item:hover { transform: translateY(-4px); }
-    .cat-item img {
-      width: 100%;
-      border-radius: var(--radius);
-    }
-    .cat-item h4 {
-      margin-top: 12px;
-      font-size: 18px;
-      color: var(--dark);
+    .btn-minimal:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(255, 147, 0, 0.4);
     }
 
-    /* FORM */
-    .first-time {
-      padding: 60px 40px;
-      background: white;
-      display: flex;
-      justify-content: space-between;
-      gap: 40px;
-      align-items: center;
+    /* Вариант 2 — Стеклянные */
+    .btn-glass {
+      padding: 14px 26px;
+      background: rgba(255, 147, 0, 0.1);
+      color: #ff9300;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 147, 0, 0.4);
+      backdrop-filter: blur(10px);
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.25s;
+      display: inline-block;
+      margin-right: 20px;
     }
-    .first-time form {
-      width: 100%; max-width: 400px;
-    }
-    label { font-size: 13px; font-weight: 600; display: block; margin: 10px 0 4px; }
-    input {
-      width: 100%; padding: 12px; border: 1px solid #ddd;
-      border-radius: var(--radius);
-      margin-bottom: 14px;
+    .btn-glass:hover {
+      background: rgba(255, 147, 0, 0.2);
     }
 
-    /* FOOTER */
-    footer {
-      background: var(--dark);
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
+    /* Вариант 3 — Премиум */
+    .btn-premium {
+      padding: 16px 32px;
+  background: linear-gradient(135deg, #ff9300, #ff7a00);
+  color: #fff;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s;
+  box-shadow: 0 6px 16px rgba(255, 147, 0, 0.35);
     }
+    .btn-premium:hover {
+      filter: brightness(1.07);
+    }
+    .btn-premium:hover {
+      filter: brightness(0.95);
+  box-shadow: 0 3px 10px rgba(255, 147, 0, 0.25);
+    }
+
+
+
+
   </style>
 </head>
 <body>
 
-<header>
-  <div class="logo"><img src="/assets/templates/new/images/logo3.png"></div>
-  <nav>
-    <ul>
-      <li><a href="#">Стоимость</a></li>
-      <li><a href="#">Юр. лицам</a></li>
-      <li><a href="#">Поставщикам</a></li>
-      <li><a href="#">Каталог</a></li>
-      <li><a href="#">Контакты</a></li>
-    </ul>
-  </nav>
-  <div class="languages">
-    <a href="#">PL</a>
-    <a href="#">RU</a>
-    <a href="#">UA</a>
-  </div>
-</header>
+<h1>Демо дизайна кнопок</h1>
+<p>Посмотри, какая тебе нравится. Потом подгоним под твой сайт.</p>
 
-<section class="hero">
-  <div class="hero-text">
-    <h1>Возврат VAT 23% и доставка покупок<br>из Польши и ЕС</h1>
-    <p>С нами заказывают более 14 000 клиентов и 85 компаний.</p>
-    <a class="btn" href="#">Оформить заказ</a>
-  </div>
-  <div>
-    <img src="/assets/images/main/banner_new.png" style="max-width:420px;width:100%">
-  </div>
-</section>
+<h2>1. Минималистичная кнопка</h2>
+<button class="btn-minimal">Оформить заказ</button>
 
-<section class="cats">
-  <h2>Категории магазинов</h2>
-  <div class="cats-grid">
-    <div class="cat-item">
-      <img src="/assets/images/shops/oblozhki/katalog-kosmetika.jpg">
-      <h4>Косметика</h4>
-    </div>
-    <div class="cat-item">
-      <img src="/assets/images/shops/oblozhki/katalog-detskaya-odezhda-i-obuv.jpg">
-      <h4>Детская одежда</h4>
-    </div>
-    <div class="cat-item">
-      <img src="/assets/images/shops/oblozhki/katalog-bytovaya-tehnika.jpg">
-      <h4>Бытовая техника</h4>
-    </div>
-    <div class="cat-item">
-      <img src="/assets/images/shops/oblozhki/katalog-telefony-i-kompyutery.jpg">
-      <h4>Телефоны</h4>
-    </div>
-  </div>
-</section>
+<h2>2. Стеклянная кнопка</h2>
+<button class="btn-glass">Оформить заказ</button>
 
-<section class="first-time">
-  <div>
-    <h2 style="color: var(--orange);">Впервые покупаете?</h2>
-    <p>Мы поможем найти любой товар по выгодной цене.</p>
-
-    <form>
-      <label>Модель товара *</label>
-      <input placeholder="Кроссовки Adidas Superstar" />
-
-      <label>Ваш телефон</label>
-      <input placeholder="+48 ..." />
-
-      <label>Email *</label>
-      <input type="email" placeholder="info@privoz.pl" />
-
-      <button class="btn" type="submit">Узнать цену</button>
-    </form>
-  </div>
-
-  <img src="/assets/templates/new/images/first_time.png" style="max-width:380px;width:100%">
-</section>
-
-<footer>
-  © Privoz.pl — доставка покупок из Польши и Европы
-</footer>
+<h2>3. Премиальная кнопка</h2>
+<button class="btn-premium">Оформить заказ</button>
 
 </body>
 </html>
