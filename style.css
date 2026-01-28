@@ -1,0 +1,383 @@
+/* =========================
+   ORANGE HEADER THEME
+   ========================= */
+:root{
+  --orange-50:  #fff7ed;
+  --orange-100: #ffedd5;
+  --orange-200: #fed7aa;
+  --orange-400: #fb923c;
+  --orange-500: #f97316;
+  --orange-600: #ea580c;
+  --orange-700: #c2410c;
+
+  --text: #111827;
+  --muted: #6b7280;
+  --line: rgba(17,24,39,.10);
+
+  --radius: 16px;
+  --shadow: 0 12px 30px rgba(17,24,39,.10);
+  --shadow-soft: 0 10px 18px rgba(17,24,39,.08);
+}
+
+/* Общая “шапка” */
+header.container-fluid{
+  padding: 0;
+  background:
+    radial-gradient(900px 450px at 20% -20%, rgba(249,115,22,.22), transparent 55%),
+    radial-gradient(900px 450px at 90% -10%, rgba(251,146,60,.18), transparent 55%),
+    linear-gradient(180deg, #ffffff 0%, var(--orange-50) 100%);
+}
+
+/* Верхняя линия */
+header .row.top.head{
+  margin: 0;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255,255,255,.78);
+  backdrop-filter: blur(10px);
+}
+
+/* Контейнер внутри */
+header .row.top.head > .container{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Лого + контакты */
+header .logo{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+header .logo a img{
+  height: 46px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 6px 10px rgba(17,24,39,.10));
+}
+
+/* Иконки чатов */
+header .phones .chats{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+header .phones .chats .chat{
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid rgba(249,115,22,.25);
+  box-shadow: 0 8px 14px rgba(17,24,39,.08);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+header .phones .chats .chat::before{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background: radial-gradient(circle, rgba(249,115,22,.25), transparent 55%);
+  transform: rotate(25deg);
+  opacity: 0;
+  transition: opacity .18s ease;
+}
+
+header .phones .chats .chat:hover{
+  transform: translateY(-2px);
+  border-color: rgba(249,115,22,.55);
+  box-shadow: var(--shadow-soft);
+}
+header .phones .chats .chat:hover::before{ opacity: 1; }
+
+/* Если у тебя иконки заданы background-image — оставляем как есть.
+   Если нет, можно добавить простые “буквы” как fallback: */
+header .phones .chats .viber-chat::after{ content:"V"; font-weight:800; color: var(--orange-700); }
+header .phones .chats .telegram-chat::after{ content:"T"; font-weight:800; color: var(--orange-700); }
+header .phones .chats .whatsapp-chat::after{ content:"W"; font-weight:800; color: var(--orange-700); }
+
+/* Меню */
+header .row.menu{
+  align-items: center;
+  gap: 14px;
+}
+
+header ul.nav{
+  gap: 6px;
+  padding: 8px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.75);
+  border: 1px solid rgba(249,115,22,.18);
+  box-shadow: 0 10px 22px rgba(17,24,39,.06);
+}
+
+header .nav-link{
+  color: var(--text) !important;
+  font-weight: 600;
+  padding: 10px 14px !important;
+  border-radius: 999px;
+  transition: background .18s ease, transform .18s ease, color .18s ease, box-shadow .18s ease;
+}
+
+header .nav-link:hover{
+  background: linear-gradient(180deg, rgba(249,115,22,.14), rgba(249,115,22,.07));
+  color: var(--orange-700) !important;
+  transform: translateY(-1px);
+}
+
+header .nav-item.active .nav-link{
+  background: linear-gradient(180deg, rgba(249,115,22,.20), rgba(249,115,22,.10));
+  color: var(--orange-700) !important;
+  box-shadow: 0 10px 18px rgba(249,115,22,.12);
+}
+
+/* Выпадающее подменю (Блог) */
+header .open-close-submenu{
+  position: relative;
+}
+
+header .open-close-submenu > ul{
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  min-width: 280px;
+  position: absolute;
+  left: 0;
+  top: calc(100% + 10px);
+  background: rgba(255,255,255,.92);
+  border: 1px solid rgba(249,115,22,.18);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease;
+}
+
+header .open-close-submenu:hover > ul{
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+header .open-close-submenu > ul li a{
+  display: block;
+  padding: 10px 12px;
+  border-radius: 12px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  transition: background .18s ease, color .18s ease, transform .18s ease;
+}
+
+header .open-close-submenu > ul li a:hover{
+  background: rgba(249,115,22,.10);
+  color: var(--orange-700);
+  transform: translateX(2px);
+}
+
+/* Блок “Личный кабинет” справа */
+header .menus.login{
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+header .menus.login > p{
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: .2px;
+  color: var(--text);
+}
+
+header .menus.login ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+}
+
+header .menus.login ul a{
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  border: 1px solid rgba(249,115,22,.25);
+  background: rgba(255,255,255,.85);
+  color: var(--orange-700);
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+
+header .menus.login ul a:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 16px rgba(249,115,22,.12);
+  background: rgba(249,115,22,.08);
+}
+
+/* Языки */
+header .languages{
+  display: flex;
+  gap: 6px;
+  padding-left: 6px;
+  border-left: 1px solid var(--line);
+}
+
+header .languages .language{
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 12px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: rgba(249,115,22,.10);
+  color: var(--orange-700);
+  border: 1px solid rgba(249,115,22,.18);
+  transition: transform .18s ease, background .18s ease;
+}
+header .languages .language:hover{
+  transform: translateY(-1px);
+  background: rgba(249,115,22,.16);
+}
+
+/* Hero/offer блок */
+header .offer{
+  margin-top: 18px;
+  padding: 22px;
+  border-radius: calc(var(--radius) + 4px);
+  background:
+    radial-gradient(700px 300px at 20% 0%, rgba(249,115,22,.25), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,247,237,.92));
+  border: 1px solid rgba(249,115,22,.18);
+  box-shadow: var(--shadow);
+}
+
+header .offer p{
+  margin: 0 0 14px 0;
+  color: var(--text);
+  font-weight: 900;
+  font-size: 28px;
+  line-height: 1.15;
+}
+
+header .offer p span{
+  display: inline-block;
+  margin-top: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+header .offer > span{
+  display: inline-block;
+  margin: 10px 0 14px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* Кнопки — делаем оранжевыми, даже если у тебя btn-success */
+header .offer .btn,
+header .offer .btn.btn-success{
+  border: none !important;
+  border-radius: 999px !important;
+  padding: 12px 18px !important;
+  font-weight: 900 !important;
+  letter-spacing: .2px;
+  background: linear-gradient(180deg, var(--orange-500), var(--orange-600)) !important;
+  box-shadow: 0 14px 26px rgba(249,115,22,.22);
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+
+header .offer .btn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 18px 34px rgba(249,115,22,.28);
+  filter: brightness(1.02);
+}
+
+header .offer .cabinetIn{
+  display: inline-flex;
+  align-items: center;
+  margin-left: 10px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  font-weight: 900;
+  text-decoration: none;
+  color: var(--orange-700);
+  background: rgba(255,255,255,.85);
+  border: 1px solid rgba(249,115,22,.25);
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+
+header .offer .cabinetIn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 12px 20px rgba(17,24,39,.10);
+  background: rgba(249,115,22,.08);
+}
+
+/* Бургер */
+header .open-close-menu{
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  border: 1px solid rgba(249,115,22,.25);
+  background: rgba(255,255,255,.85);
+  display: none; /* покажем на мобиле */
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 0 10px 18px rgba(17,24,39,.08);
+}
+
+header .open-close-menu .line{
+  width: 22px;
+  height: 2px;
+  background: var(--orange-700);
+  border-radius: 999px;
+  opacity: .9;
+}
+
+/* Мобилка */
+@media (max-width: 992px){
+  header .row.menu{
+    justify-content: space-between !important;
+  }
+
+  header ul.nav{
+    border-radius: var(--radius);
+    padding: 10px;
+  }
+
+  header .menus.login{
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 768px){
+  header .logo{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  header .open-close-menu{
+    display: inline-flex;
+  }
+
+  header .offer p{
+    font-size: 22px;
+  }
+}
