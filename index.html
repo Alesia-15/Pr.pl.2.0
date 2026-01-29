@@ -1,121 +1,218 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Демо кнопок</title>
-	<link rel="stylesheet" href="style.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Демо</title>
+    <link rel="stylesheet" href="style.css" />
 
-<button class="btn-premium">Оформить заказ</button>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container py-3">
+        <nav class="navbar navbar-expand-lg align-items-center header-nav">
+          <!-- Brand -->
+          <a class="navbar-brand d-flex align-items-center gap-2" href="/ru/">
+            <img src="/logo3.png" alt="Privoz.pl" class="brand-logo" />
+          </a>
 
-<header class="container-fluid  ">
-  <div class="row top head">
-    <div class="container">
-      <div class="logo">
-		  <a href="/ru/" title=""><img src="/assets/templates/new/images/logo3.png" alt="Privoz.pl"></a>
-        <div class="phones">
-          <div class="chats">
-            <a href="viber://chat?number=%2B48780522333" class="chat viber-chat" title="Задать вопрос в Viber"></a>
-            <a href="https://t.me/privozpl" class="chat telegram-chat" title="Задать вопрос в Telegram"></a>
-            <a href="https://wa.me/48780522333" class="chat whatsapp-chat" title="Задать вопрос в WhatsApp"></a>
-          </div>
-		  <!--<div class="languages_mobi">
-            <a href="https://privoz.pl/" class="language">RU</a>
-            <a href="https://pl.privoz.pl/" class="language">PL</a>
-            <a href="https://ua.privoz.pl/" class="language">UA</a>
-          </div>-->
-        </div>
-      </div>
-      <div class="row menu justify-content-center">
-        <ul class="nav justify-content-center">
-          <li class="nav-item">
-            <a href="/ru/#calculator" class="nav-link" title="">Стоимость</a>
-          </li>
-          <li class="nav-item">
-            <a href="ru/opt.html" class="nav-link" title="">Юридическим лицам</a>
-          </li>
-          <li class="nav-item">
-            <a href="ru/suppliers.html" class="nav-link" title="">Поставщикам</a>
-          </li>
-          <li class="nav-item open-close-submenu">
-            <a href="blog.html" class="nav-link servic" title="">Блог</a>
-            <ul>
-              <li><a href="informaciya/faq.html" title="">Ответы на вопросы</a></li>
-              <li><a href="katalog-magazinov.html" title="">Каталог интернет-магазинов</a></li>
-              <li><a href="blog/opt-polsha.html" title="">Экспорт юридическим лицам</a></li>
-              <li><a href="blog/ocheredi-v-avtodorozhnyh-punktah-propuska-polshi-i-litvy.html" title="">Очередь на границе</a></li>
-              <li><a href="blog/prazdnichnye-dni-polshi-v-2026.html" title="">Праздничные дни Польши</a></li>
-              <li><a href="informaciya/razmery.html" title="">Таблица размеров одежды и обуви</a></li>
-              <li><a href="blog.html" title="">Другие статьи</a></li>
+          <!-- Mobile toggler -->
+          <button
+            class="navbar-toggler header-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#topNav"
+            aria-controls="topNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Nav -->
+          <div class="collapse navbar-collapse" id="topNav">
+            <ul class="navbar-nav mx-lg-auto gap-lg-2 mt-3 mt-lg-0 header-menu">
+              <li class="nav-item">
+                <a class="nav-link" href="/ru/#calculator">Стоимость</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="ru/opt.html">Юридическим лицам</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="ru/suppliers.html">Поставщикам</a>
+              </li>
+
+              <!-- Dropdown -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="blog.html"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Блог
+                </a>
+                <ul class="dropdown-menu header-dropdown">
+                  <li>
+                    <a class="dropdown-item" href="informaciya/faq.html"
+                      >Ответы на вопросы</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="katalog-magazinov.html"
+                      >Каталог интернет-магазинов</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="blog/opt-polsha.html"
+                      >Экспорт юридическим лицам</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="blog/ocheredi-v-avtodorozhnyh-punktah-propuska-polshi-i-litvy.html"
+                      >Очередь на границе</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="blog/prazdnichnye-dni-polshi-v-2026.html"
+                      >Праздничные дни Польши</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="informaciya/razmery.html"
+                      >Таблица размеров одежды и обуви</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="blog.html">Другие статьи</a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="katalog-magazinov.html">Каталог</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/ru/#contact">Контакты</a>
+              </li>
             </ul>
-          </li>
-          <li class="nav-item">
-            <a href="katalog-magazinov.html" class="nav-link" title="">Каталог</a>
-          </li>
-          <li class="nav-item">
-            <a href="/ru/#contact" class="nav-link">Контакты</a>
-          </li>
-        </ul>
-        <div class="open-close-menu">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
-        <div class="sign-mobile">
-          <ul>
-            <li>
-              <a href="http://client.privoz.pl/users/register?utm_source=google&amp;utm_medium=direct&amp;utm_term=&amp;utm_content=https://privoz.pl/blog/chto-takoe-vaty-v-polshe.html&amp;utm_campaign=" class="utm-link">Регистрация</a>
-            </li>
-            <li>
-              <a href="http://client.privoz.pl/?utm_source=google&amp;utm_medium=direct&amp;utm_term=&amp;utm_content=https://privoz.pl/blog/chto-takoe-vaty-v-polshe.html&amp;utm_campaign=" class="utm-link" title="">Войти</a>
-            </li>
-          </ul>
-        </div>
+
+            <!-- Right side -->
+            <div
+              class="d-flex flex-column flex-lg-row gap-2 gap-lg-3 align-items-lg-center mt-3 mt-lg-0 header-right"
+            >
+              <!-- Auth -->
+              <div class="d-flex gap-2 align-items-center">
+                <a
+                  class="btn btn-outline-primary btn-sm header-btn"
+                  href="http://client.privoz.pl/users/register?utm_source=google&amp;utm_medium=direct&amp;utm_term=&amp;utm_content=&amp;utm_campaign="
+                  >Регистрация</a
+                >
+
+                <a
+                  class="btn btn-primary btn-sm header-btn"
+                  href="http://client.privoz.pl/?utm_source=google&amp;utm_medium=direct&amp;utm_term=&amp;utm_content=&amp;utm_campaign="
+                  >Войти</a
+                >
+              </div>
+
+              <!-- Languages -->
+              <div class="dropdown">
+                <button
+                  class="btn btn-light btn-sm header-lang dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  RU
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end header-dropdown">
+                  <li><a class="dropdown-item" href="/">PL</a></li>
+                  <li><a class="dropdown-item" href="/ru/">RU</a></li>
+                  <li><a class="dropdown-item" href="/ua/">UA</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
       </div>
 
-      <div class="menus login">
-        <p>Личный кабинет</p>
-        <ul>
-          <li>
-            <a href="http://client.privoz.pl/users/register?utm_source=google&amp;utm_medium=direct&amp;utm_term=&amp;utm_content=https://privoz.pl/blog/chto-takoe-vaty-v-polshe.html&amp;utm_campaign=" class="utm-link">Регистрация</a>
-          </li>
-          <li>
-            <a href="http://client.privoz.pl/?utm_source=google&amp;utm_medium=direct&amp;utm_term=&amp;utm_content=https://privoz.pl/blog/chto-takoe-vaty-v-polshe.html&amp;utm_campaign=" class="utm-link">Войти</a>
-          </li>
-        </ul>
-        <div class="languages">
-			<a href="/" class="language">PL</a>
-			<a href="/ru/" class="language">RU</a>
-			<a href="/ua/" class="language">UA</a>
+      <!-- Offer (оставил твой блок) -->
+      <div class="container pb-4">
+        <div class="row">
+          <div class="col-xl-6 col-lg-6 col-md-11 col-sm-12 offer">
+            <p>
+              ВОЗВРАТ VAT 23% С ПОКУПОК<br /><span
+                >СПЕЦИАЛЬНЫЕ УСЛОВИЯ ДЛЯ ОПТОВЫХ КЛИЕНТОВ</span
+              >
+            </p>
+            <a
+              href="javascript:void(0)"
+              class="btn btn-success btn-lg fast-order"
+              >Оформить заказ</a
+            >
+            <a
+              href="http://client.privoz.pl/?utm_source=google&amp;utm_medium=direct&amp;utm_term=&amp;utm_content=&amp;utm_campaign="
+              class="utm-link cabinetIn"
+              >Личный кабинет</a
+            >
+            <br />
+            <span>*с нами заказывают более 14000 человек </span>
+            <p><span>СОПРОВОЖДЕНИЕ СДЕЛОК С ЮРИДИЧЕСКИМИ ЛИЦАМИ</span></p>
+            <a href="ru/opt.html" class="btn btn-success btn-lg">Подробнее</a>
+            <br />
+            <span>*с нами заказывают более 85 компаний</span>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+    </header>
 
-  
+    <section id="news-block" class="container-fluid pt-4 pb-4">
+      <div class="container">
+        <div class="row">
+          <div
+            class="col-xl-3 col-lg-3 col-md-4 colimage-news-block text-center"
+          >
+            <img src="privoz_news.png" alt="Новости" />
+          </div>
+          <div class="col-xl-4 col-lg-5 col-md-6 news-text">
+            <div class="row">
+              <div class="col-12 news-post">
+                <h4>Открытые границы!</h4>
+                <p>
+                  В связи с открытием границы в Бобровниках и Кузнице 17 ноября:
+                  <br />Приглашаем вас на наши склады в Белостоке и Кузнице!
+                </p>
+              </div>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-xl-6 col-lg-6 col-md-11 col-sm-12 offer">
-        <p>
-          ВОЗВРАТ VAT 23% С ПОКУПОК<br><span>СПЕЦИАЛЬНЫЕ УСЛОВИЯ ДЛЯ ОПТОВЫХ КЛИЕНТОВ</span>
-        </p>
-        <a href="javascript:void(0)" class="btn btn-success btn-lg fast-order">Оформить заказ</a>
-        <a href="http://client.privoz.pl/?utm_source=google&amp;utm_medium=direct&amp;utm_term=&amp;utm_content=https://privoz.pl/blog/chto-takoe-vaty-v-polshe.html&amp;utm_campaign=" class="utm-link cabinetIn">Личный кабинет</a>
-        <br>
-        <span>*с нами заказывают более 14000 человек </span>
-        <p><span>СОПРОВОЖДЕНИЕ СДЕЛОК С ЮРИДИЧЕСКИМИ ЛИЦАМИ</span></p>
-        <a href="ru/opt.html" class="btn btn-success btn-lg" title="">Подробнее</a>
-        <br>
-        <span>*с нами заказывают более 85 компаний</span>
+              <div class="col-12 news-post">
+                <h4>Новый тариф для новых заказов!</h4>
+                <p>
+                  Добавлена новая комиссия 4% для НОВЫХ заказов без выписки TAX
+                  FREE. <br />Изменен диапазон суммы для сниженной комиссии 5% с
+                  39 000 zl до 29 000 zl. <br /><a
+                    href="https://privoz.pl/tariffs_ru_pl_v50.pdf"
+                    target="_blank"
+                    >Ссылка на новые тарифы</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  
-</header>
-  
-</body>
+    <!-- Bootstrap JS (для dropdown, modal, collapse и т.д.) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
