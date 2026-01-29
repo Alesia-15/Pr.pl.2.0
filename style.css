@@ -22,10 +22,13 @@
   --radius: 18px;
   --shadow: 0 18px 40px rgba(17, 24, 39, 0.1);
   --shadowSoft: 0 12px 26px rgba(17, 24, 39, 0.06);
+
+  /* высота фиксированной шапки (на глаз, чтобы не наезжало) */
+  --header-fixed-space: 92px;
 }
 
 /* =========================
-   GLOBAL BASE (чтобы выглядело цельно)
+   GLOBAL BASE
    ========================= */
 html,
 body {
@@ -36,7 +39,6 @@ body {
   margin: 0;
   color: var(--text);
   background: #fff;
-  /* Если подключишь Inter — подхватится автоматически */
   font-family:
     Inter,
     system-ui,
@@ -75,6 +77,10 @@ a {
 .site-header {
   position: relative;
   overflow: hidden;
+  padding-bottom: 26px;
+  /* место под fixed navbar */
+  padding-top: var(--header-fixed-space);
+
   background:
     radial-gradient(
       900px 450px at 20% -20%,
@@ -139,20 +145,25 @@ a {
 }
 
 /* =========================
-   NAV "CARD"
+   NAV "CARD" (FIXED ON SCROLL)
    ========================= */
 .header-nav {
   border: 1px solid rgba(255, 122, 0, 0.18);
   border-radius: var(--radius);
   padding: 10px 12px;
-  background: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.86);
   backdrop-filter: blur(10px);
   box-shadow: var(--shadowSoft);
-  position: relative;
-  z-index: 2;
+  z-index: 2000;
+
+  /* чтобы шапка НЕ исчезала при скролле */
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1320px, calc(100% - 24px));
 }
 
-/* Logo */
 .brand-logo {
   height: 44px;
   width: auto;
@@ -160,7 +171,7 @@ a {
 }
 
 /* =========================
-   MENU LAYOUT - FIT
+   MENU LAYOUT
    ========================= */
 .header-nav .navbar-collapse {
   flex: 1 1 auto;
@@ -204,7 +215,6 @@ a {
   color: var(--brand-orange-dark) !important;
 }
 
-/* тонкая подчёркивающая линия при hover */
 .header-menu .nav-link::after {
   content: "";
   position: absolute;
@@ -221,10 +231,10 @@ a {
 }
 
 /* =========================
-   DROPDOWN (Блог) – кастомный chevron
+   DROPDOWN (Блог)
    ========================= */
 .header-menu .dropdown-toggle::after {
-  display: none !important; /* убираем bootstrap caret */
+  display: none !important;
 }
 
 .header-menu .dropdown-toggle {
@@ -256,7 +266,6 @@ a {
   border-bottom-color: rgba(255, 122, 0, 0.85);
 }
 
-/* Dropdown menu */
 .header-dropdown {
   border: 1px solid rgba(255, 122, 0, 0.18);
   border-radius: 14px;
@@ -284,7 +293,6 @@ a {
   white-space: nowrap;
 }
 
-/* Primary (Войти / CTA) */
 .site-header .btn-primary,
 .site-header .btn-success {
   background: linear-gradient(
@@ -313,7 +321,6 @@ a {
   filter: brightness(1.02);
 }
 
-/* Outline (Регистрация + Личный кабинет в оффере) */
 .site-header .btn-outline-primary,
 .site-header .cabinetIn {
   background: #fff !important;
@@ -353,7 +360,6 @@ a {
   box-shadow: 0 8px 18px rgba(255, 122, 0, 0.25);
   transform: translateY(-1px);
 }
-/* если хочешь вращение caret на hover */
 .site-header .header-lang::after {
   transition: transform 0.18s ease;
 }
@@ -387,7 +393,6 @@ a {
   box-shadow: var(--shadow);
 }
 
-/* лёгкое “сияние” рамки */
 .site-header .offer::before {
   content: "";
   position: absolute;
@@ -403,7 +408,6 @@ a {
   pointer-events: none;
 }
 
-/* декоративный акцент внутри справа сверху */
 .site-header .offer::after {
   content: "";
   position: absolute;
@@ -430,7 +434,6 @@ a {
   position: relative;
 }
 
-/* Подзаголовок в hero (если есть) */
 .site-header .offer p span {
   display: inline-block;
   margin-top: 8px;
@@ -439,7 +442,6 @@ a {
   color: var(--muted);
 }
 
-/* мелкий текст под кнопками */
 .site-header .offer > span {
   display: inline-block;
   margin: 10px 0 14px;
@@ -449,7 +451,6 @@ a {
   z-index: 2;
 }
 
-/* Offer buttons */
 .site-header .offer .btn,
 .site-header .offer .btn.btn-success {
   border-radius: 999px !important;
@@ -459,7 +460,6 @@ a {
   z-index: 2;
 }
 
-/* “Личный кабинет” в оффере */
 .site-header .offer .cabinetIn {
   display: inline-flex !important;
   align-items: center;
@@ -470,10 +470,7 @@ a {
   min-width: 0;
 }
 
-/* =========================
-   CALMER BADGES
-   “СПЕЦИАЛЬНЫЕ УСЛОВИЯ…” и “СОПРОВОЖДЕНИЕ…” одинаковые, спокойные
-   ========================= */
+/* Calm badges */
 .site-header .offer > p:first-child > span,
 .site-header .offer > p:nth-of-type(2) > span {
   display: inline-flex;
@@ -510,71 +507,54 @@ a {
 }
 
 /* =========================
-   NEWS BLOCK (дальше стилизуем страницу)
+   NEWS BLOCK
    ========================= */
 #news-block {
-  background: linear-gradient(180deg, #fff, #fbfbfb);
+  padding: 54px 0;
+  background:
+    radial-gradient(
+      900px 360px at 10% 10%,
+      rgba(255, 122, 0, 0.08),
+      transparent 55%
+    ),
+    linear-gradient(180deg, #fff, #fbfbfb);
   border-top: 1px solid rgba(17, 24, 39, 0.06);
 }
 
-#news-block .container {
-  position: relative;
+#news-block .colimage-news-block {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 
-#news-block .colimage-news-block img {
-  max-width: 220px;
-  width: 100%;
-  height: auto;
-  filter: drop-shadow(0 16px 24px rgba(17, 24, 39, 0.12));
-}
-
-/* Колонка с текстом */
+/* сетка справа */
 #news-block .news-text {
-  margin-left: auto;
+  display: grid;
+  gap: 14px;
 }
 
+/* Карточки */
 #news-block .news-post {
   background: #fff;
   border: 1px solid rgba(17, 24, 39, 0.08);
   border-radius: 16px;
   padding: 16px 16px;
   box-shadow: 0 10px 22px rgba(17, 24, 39, 0.06);
-  margin-bottom: 14px;
-}
-
-#news-block .news-post h4 {
-  margin: 0 0 8px 0;
-  font-size: 18px;
-  font-weight: 800;
-  color: var(--text);
-}
-
-#news-block .news-post p {
-  margin: 0;
-  color: var(--muted);
-  font-weight: 500;
-  line-height: 1.5;
-}
-
-#news-block .news-post a {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 10px;
-  color: var(--brand-orange-dark);
-  font-weight: 700;
-  text-decoration: none;
-}
-
-#news-block .news-post a:hover {
-  text-decoration: underline;
-}
-
-/* маленький декоративный акцент слева у карточек */
-#news-block .news-post {
   position: relative;
   overflow: hidden;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
 }
+
+#news-block .news-post:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 34px rgba(17, 24, 39, 0.1);
+  border-color: rgba(255, 122, 0, 0.2);
+}
+
+/* Акцентная полоска слева */
 #news-block .news-post::before {
   content: "";
   position: absolute;
@@ -591,8 +571,114 @@ a {
   opacity: 0.9;
 }
 
+#news-block .news-post h4 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+#news-block .news-post p {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+#news-block .news-post a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  color: var(--brand-orange-dark);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+#news-block .news-post a:hover {
+  text-decoration: underline;
+}
+
 /* =========================
-   FIT TUNING
+   NEWS BADGE (NOT A CIRCLE)
+   Вместо круга — аккуратная карточка
+   ========================= */
+.news-badge {
+  width: 240px;
+  min-height: 170px;
+  border-radius: 22px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 18px 18px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.92),
+    rgba(255, 247, 237, 0.95)
+  );
+  border: 1px solid rgba(255, 122, 0, 0.18);
+  box-shadow: 0 18px 34px rgba(17, 24, 39, 0.08);
+
+  position: relative;
+  overflow: hidden;
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+/* мягкий градиентный акцент внутри */
+.news-badge::before {
+  content: "";
+  position: absolute;
+  right: -36px;
+  top: -36px;
+  width: 140px;
+  height: 140px;
+  border-radius: 999px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 122, 0, 0.28),
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+.news-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 26px 46px rgba(17, 24, 39, 0.12);
+  border-color: rgba(255, 122, 0, 0.28);
+}
+
+/* Icon: делаем маленький "плиткой" */
+.news-badge svg {
+  width: 44px;
+  height: 44px;
+  fill: var(--brand-orange-dark);
+  opacity: 0.95;
+  background: rgba(255, 122, 0, 0.1);
+  border: 1px solid rgba(255, 122, 0, 0.18);
+  border-radius: 14px;
+  padding: 10px;
+  box-sizing: content-box;
+}
+
+/* Text */
+.news-badge span {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.2px;
+}
+
+/* =========================
+   RESPONSIVE
    ========================= */
 @media (max-width: 1200px) {
   .header-menu .nav-link {
@@ -616,6 +702,10 @@ a {
 }
 
 @media (max-width: 992px) {
+  :root {
+    --header-fixed-space: 88px;
+  }
+
   .header-menu {
     justify-content: flex-start;
     padding-top: 8px;
@@ -635,10 +725,21 @@ a {
     height: 520px;
   }
 
-  #news-block .colimage-news-block {
-    margin-bottom: 14px;
+  #news-block {
+    padding: 38px 0;
   }
-  #news-block .colimage-news-block img {
-    max-width: 180px;
+
+  .news-badge {
+    width: 220px;
+    min-height: 150px;
+    border-radius: 20px;
+  }
+  .news-badge svg {
+    width: 40px;
+    height: 40px;
+    padding: 9px;
+  }
+  .news-badge span {
+    font-size: 16px;
   }
 }
