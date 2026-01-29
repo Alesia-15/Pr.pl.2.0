@@ -1,34 +1,28 @@
 /* =========================
-   PRIVOZ ORANGE THEME (FULL / CLEAN)
-   Header + Hero + News block
-   No chats styles
+   PRIVOZ (FULL CSS — ALL SECTIONS)
+   Header + Offer + News + About(Сервис) + Shops Carousel + Form
    ========================= */
 
 :root {
-  /* Brand (под лого) */
   --brand-orange: #ff7a00;
   --brand-orange-dark: #ff5f00;
   --brand-orange-light: #ff9a3d;
 
-  /* UI */
   --o50: #fff7ed;
   --o100: #ffedd5;
-  --o200: #fed7aa;
 
   --text: #111827;
   --muted: #6b7280;
-  --line: rgba(17, 24, 39, 0.1);
 
   --radius: 18px;
-  --shadow: 0 18px 40px rgba(17, 24, 39, 0.1);
-  --shadowSoft: 0 12px 26px rgba(17, 24, 39, 0.06);
+  --shadow: 0 18px 40px #1118271a;
+  --shadowSoft: 0 12px 26px #1118270f;
 
-  /* высота фиксированной шапки (на глаз, чтобы не наезжало) */
   --header-fixed-space: 92px;
 }
 
 /* =========================
-   GLOBAL BASE
+   GLOBAL
    ========================= */
 html,
 body {
@@ -54,21 +48,8 @@ body {
 a {
   color: inherit;
 }
-
 ::selection {
   background: rgba(255, 122, 0, 0.18);
-}
-
-/* =========================
-   HEADER BASE
-   ========================= */
-.site-header a {
-  text-decoration: none;
-}
-.site-header img {
-  max-width: 100%;
-  height: auto;
-  display: block;
 }
 
 /* =========================
@@ -78,9 +59,7 @@ a {
   position: relative;
   overflow: hidden;
   padding-bottom: 26px;
-  /* место под fixed navbar */
   padding-top: var(--header-fixed-space);
-
   background:
     radial-gradient(
       900px 450px at 20% -20%,
@@ -95,7 +74,15 @@ a {
     linear-gradient(180deg, #fff 0%, var(--o50) 100%);
 }
 
-/* мягкая подсветка справа */
+.site-header a {
+  text-decoration: none;
+}
+.site-header img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 .site-header::before {
   content: "";
   position: absolute;
@@ -119,7 +106,6 @@ a {
   pointer-events: none;
 }
 
-/* лёгкий “пылевой” паттерн */
 .site-header::after {
   content: "";
   position: absolute;
@@ -145,7 +131,7 @@ a {
 }
 
 /* =========================
-   NAV "CARD" (FIXED ON SCROLL)
+   NAV "CARD" (FIXED)
    ========================= */
 .header-nav {
   border: 1px solid rgba(255, 122, 0, 0.18);
@@ -156,7 +142,6 @@ a {
   box-shadow: var(--shadowSoft);
   z-index: 2000;
 
-  /* чтобы шапка НЕ исчезала при скролле */
   position: fixed;
   top: 0;
   left: 50%;
@@ -170,9 +155,7 @@ a {
   filter: drop-shadow(0 8px 14px rgba(17, 24, 39, 0.1));
 }
 
-/* =========================
-   MENU LAYOUT
-   ========================= */
+/* Layout */
 .header-nav .navbar-collapse {
   flex: 1 1 auto;
   min-width: 0;
@@ -197,9 +180,7 @@ a {
   gap: 8px;
 }
 
-/* =========================
-   MENU LINKS
-   ========================= */
+/* Links */
 .header-menu .nav-link {
   font-weight: 600;
   color: var(--text) !important;
@@ -230,17 +211,13 @@ a {
   background: rgba(255, 122, 0, 0.55);
 }
 
-/* =========================
-   DROPDOWN (Блог)
-   ========================= */
+/* Dropdown caret */
 .header-menu .dropdown-toggle::after {
   display: none !important;
 }
-
 .header-menu .dropdown-toggle {
   padding-right: 28px !important;
 }
-
 .header-menu .dropdown-toggle::before {
   content: "";
   position: absolute;
@@ -254,12 +231,6 @@ a {
   transition: 0.18s ease;
   opacity: 0.9;
 }
-
-.header-menu .dropdown:hover .dropdown-toggle::before {
-  border-right-color: rgba(255, 122, 0, 0.85);
-  border-bottom-color: rgba(255, 122, 0, 0.85);
-}
-
 .header-menu .show > .dropdown-toggle::before {
   transform: translateY(-45%) rotate(225deg);
   border-right-color: rgba(255, 122, 0, 0.85);
@@ -277,15 +248,12 @@ a {
   font-weight: 600;
   padding: 10px 14px;
 }
-
 .header-dropdown .dropdown-item:hover {
   background: rgba(255, 122, 0, 0.1);
   color: var(--brand-orange-dark);
 }
 
-/* =========================
-   BUTTONS (header + hero)
-   ========================= */
+/* Header buttons */
 .site-header .header-btn {
   border-radius: 999px !important;
   font-weight: 800 !important;
@@ -308,7 +276,6 @@ a {
     box-shadow 0.18s ease,
     filter 0.18s ease;
 }
-
 .site-header .btn-primary:hover,
 .site-header .btn-success:hover {
   background: linear-gradient(
@@ -333,7 +300,6 @@ a {
     box-shadow 0.18s ease,
     background 0.18s ease;
 }
-
 .site-header .btn-outline-primary:hover,
 .site-header .cabinetIn:hover {
   background: rgba(255, 122, 0, 0.1) !important;
@@ -341,7 +307,6 @@ a {
   box-shadow: 0 12px 22px rgba(255, 122, 0, 0.25);
 }
 
-/* Language button + hover */
 .site-header .header-lang {
   border-radius: 999px !important;
   font-weight: 800 !important;
@@ -360,21 +325,14 @@ a {
   box-shadow: 0 8px 18px rgba(255, 122, 0, 0.25);
   transform: translateY(-1px);
 }
-.site-header .header-lang::after {
-  transition: transform 0.18s ease;
-}
-.site-header .header-lang:hover::after {
-  transform: rotate(180deg);
-}
 
-/* Toggler */
 .site-header .header-toggler {
   border-radius: 12px !important;
   border: 1px solid rgba(255, 122, 0, 0.25) !important;
 }
 
 /* =========================
-   OFFER CARD (HERO)
+   OFFER CARD
    ========================= */
 .site-header .offer {
   position: relative;
@@ -393,45 +351,12 @@ a {
   box-shadow: var(--shadow);
 }
 
-.site-header .offer::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 122, 0, 0.22),
-    transparent 35%,
-    rgba(255, 154, 61, 0.18)
-  );
-  opacity: 0.35;
-  pointer-events: none;
-}
-
-.site-header .offer::after {
-  content: "";
-  position: absolute;
-  right: 18px;
-  top: 18px;
-  width: 120px;
-  height: 120px;
-  border-radius: 28px;
-  background: radial-gradient(
-    circle at 30% 30%,
-    rgba(255, 122, 0, 0.18),
-    transparent 60%
-  );
-  transform: rotate(12deg);
-  pointer-events: none;
-}
-
 .site-header .offer p {
   margin: 0 0 14px 0;
   color: var(--text);
   font-weight: 900;
   font-size: 28px;
   line-height: 1.15;
-  position: relative;
 }
 
 .site-header .offer p span {
@@ -439,7 +364,12 @@ a {
   margin-top: 8px;
   font-weight: 600;
   font-size: 14px;
-  color: var(--muted);
+  color: var(--text);
+  background: #fff7ed;
+  padding: 10px;
+  border-radius: 14px;
+  border: 1px solid var(--brand-orange-light);
+  box-shadow: 0 6px 14px #1118270f;
 }
 
 .site-header .offer > span {
@@ -447,8 +377,6 @@ a {
   margin: 10px 0 14px;
   color: var(--muted);
   font-weight: 600;
-  position: relative;
-  z-index: 2;
 }
 
 .site-header .offer .btn,
@@ -456,8 +384,6 @@ a {
   border-radius: 999px !important;
   padding: 12px 18px !important;
   font-weight: 900 !important;
-  position: relative;
-  z-index: 2;
 }
 
 .site-header .offer .cabinetIn {
@@ -467,43 +393,6 @@ a {
   white-space: nowrap;
   padding: 12px 18px !important;
   margin-left: 10px;
-  min-width: 0;
-}
-
-/* Calm badges */
-.site-header .offer > p:first-child > span,
-.site-header .offer > p:nth-of-type(2) > span {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-
-  margin-top: 12px;
-  padding: 10px 14px;
-
-  border-radius: 14px;
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.12px;
-  text-transform: none;
-
-  color: #374151;
-  background: rgba(255, 122, 0, 0.06);
-  border: 1px solid rgba(255, 122, 0, 0.18);
-  box-shadow: 0 6px 14px rgba(17, 24, 39, 0.06);
-}
-
-.site-header .offer > p:first-child > span::before,
-.site-header .offer > p:nth-of-type(2) > span::before {
-  content: "";
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  background: #ff9a3d;
-  box-shadow: none;
-}
-
-.site-header .offer > p:nth-of-type(2) {
-  margin-top: 6px;
 }
 
 /* =========================
@@ -527,13 +416,11 @@ a {
   justify-content: center;
 }
 
-/* сетка справа */
 #news-block .news-text {
   display: grid;
   gap: 14px;
 }
 
-/* Карточки */
 #news-block .news-post {
   background: #fff;
   border: 1px solid rgba(17, 24, 39, 0.08);
@@ -555,7 +442,6 @@ a {
   border-color: rgba(255, 122, 0, 0.2);
 }
 
-/* Акцентная полоска слева */
 #news-block .news-post::before {
   content: "";
   position: absolute;
@@ -569,7 +455,7 @@ a {
     var(--brand-orange-light),
     var(--brand-orange-dark)
   );
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 #news-block .news-post h4 {
@@ -595,28 +481,21 @@ a {
   font-weight: 700;
   text-decoration: none;
 }
-
 #news-block .news-post a:hover {
   text-decoration: underline;
 }
 
-/* =========================
-   NEWS BADGE (NOT A CIRCLE)
-   Вместо круга — аккуратная карточка
-   ========================= */
+/* NEWS BADGE (левый блок в новостях) */
 .news-badge {
   width: 240px;
   min-height: 170px;
   border-radius: 22px;
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
   gap: 10px;
-
   padding: 18px 18px;
-
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.92),
@@ -624,17 +503,14 @@ a {
   );
   border: 1px solid rgba(255, 122, 0, 0.18);
   box-shadow: 0 18px 34px rgba(17, 24, 39, 0.08);
-
   position: relative;
   overflow: hidden;
-
   transition:
     transform 0.18s ease,
     box-shadow 0.18s ease,
     border-color 0.18s ease;
 }
 
-/* мягкий градиентный акцент внутри */
 .news-badge::before {
   content: "";
   position: absolute;
@@ -657,7 +533,6 @@ a {
   border-color: rgba(255, 122, 0, 0.28);
 }
 
-/* Icon: делаем маленький "плиткой" */
 .news-badge svg {
   width: 44px;
   height: 44px;
@@ -670,12 +545,517 @@ a {
   box-sizing: content-box;
 }
 
-/* Text */
 .news-badge span {
   font-size: 18px;
   font-weight: 700;
   color: var(--text);
   letter-spacing: 0.2px;
+}
+
+/* =========================
+   ABOUT / Сервис Privoz.pl
+   ========================= */
+#about-privoz {
+  position: relative;
+  background:
+    radial-gradient(
+      900px 360px at 90% 10%,
+      rgba(255, 122, 0, 0.08),
+      transparent 55%
+    ),
+    linear-gradient(180deg, #ffffff 0%, #fffaf5 100%);
+  border-top: 1px solid rgba(17, 24, 39, 0.06);
+}
+
+#about-privoz::before {
+  content: "";
+  position: absolute;
+  left: -220px;
+  bottom: -220px;
+  width: 520px;
+  height: 520px;
+  border-radius: 999px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 154, 61, 0.18),
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+#about-privoz .about-block {
+  position: relative;
+  z-index: 2;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 36px 42px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(10px);
+  border-radius: 26px;
+  border: 1px solid rgba(255, 122, 0, 0.18);
+  box-shadow: 0 24px 46px rgba(17, 24, 39, 0.08);
+}
+
+#about-privoz h2 {
+  font-weight: 900;
+  font-size: 34px;
+  letter-spacing: -0.3px;
+  margin-bottom: 10px;
+}
+
+#about-privoz h5 {
+  font-weight: 700;
+  color: var(--muted);
+  margin-bottom: 26px;
+}
+
+#about-privoz .description p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #374151;
+  margin-bottom: 14px;
+}
+
+#about-privoz .description p:last-child {
+  margin-top: 18px;
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--brand-orange-dark);
+}
+
+/* =========================
+   SHOPS (Каталог) — CAROUSEL
+   ========================= */
+#shops {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      900px 420px at 15% 10%,
+      rgba(255, 122, 0, 0.08),
+      transparent 55%
+    ),
+    radial-gradient(
+      900px 420px at 85% 30%,
+      rgba(255, 154, 61, 0.06),
+      transparent 58%
+    ),
+    linear-gradient(180deg, #ffffff 0%, #fbfbfb 100%);
+  border-top: 1px solid rgba(17, 24, 39, 0.06);
+}
+
+#shops h2 {
+  font-weight: 900;
+  font-size: 34px;
+  letter-spacing: -0.3px;
+  margin-bottom: 10px;
+}
+
+#shops h5 {
+  font-weight: 700;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+#shops .shops-row {
+  margin-top: 10px;
+  position: relative;
+}
+
+/* fallback grid */
+#shops .shops-row:not(.owl-carousel) {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* Owl outer: ровный старт + тени */
+#shops .owl-stage-outer {
+  padding: 8px 0 18px !important;
+  overflow: hidden;
+}
+
+/* spacing как margin 0 5px (правильно, без съезда) */
+#shops .owl-item {
+  display: flex;
+  padding: 0 5px;
+}
+#shops .owl-stage {
+  margin: 0 -5px;
+}
+
+/* drag UX */
+#shops .owl-carousel {
+  cursor: grab;
+  -webkit-tap-highlight-color: transparent;
+}
+#shops .owl-carousel:active {
+  cursor: grabbing;
+}
+#shops .owl-carousel .owl-stage,
+#shops .owl-carousel .owl-item {
+  user-select: none;
+}
+
+/* card */
+#shops .item-cat {
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  box-shadow: 0 14px 30px rgba(17, 24, 39, 0.08);
+  overflow: hidden;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+#shops .item-cat:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 122, 0, 0.22);
+  box-shadow: 0 22px 44px rgba(17, 24, 39, 0.12);
+}
+
+#shops .item-cat a {
+  display: grid;
+  grid-template-rows: 230px auto;
+  text-decoration: none;
+  height: 100%;
+  color: inherit;
+}
+
+#shops .item-cat img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background: #fff;
+  padding: 14px;
+  transition:
+    transform 0.25s ease,
+    filter 0.25s ease;
+  filter: saturate(1.02) contrast(1.02);
+}
+#shops .item-cat:hover img {
+  transform: scale(1.03);
+  filter: saturate(1.08) contrast(1.05);
+}
+
+#shops .item-cat h4 {
+  margin: 0;
+  padding: 14px 16px 16px;
+  font-size: 15px;
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1.25;
+
+  min-height: calc(1.25em * 2);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+#shops .item-cat h4::after {
+  content: "";
+  display: block;
+  width: 46px;
+  height: 3px;
+  border-radius: 999px;
+  margin-top: 10px;
+  background: linear-gradient(
+    90deg,
+    var(--brand-orange-light),
+    var(--brand-orange-dark)
+  );
+  opacity: 0.85;
+}
+
+/* nav inside */
+#shops .shops-row.owl-carousel {
+  position: relative;
+}
+#shops .shops-row.owl-carousel .owl-nav {
+  display: block !important;
+  margin: 0 !important;
+}
+
+#shops .shops-row.owl-carousel .owl-nav button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 6;
+
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 122, 0, 0.22);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 12px 22px rgba(17, 24, 39, 0.12);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease;
+}
+
+#shops .shops-row.owl-carousel .owl-nav .owl-prev {
+  left: 12px;
+}
+#shops .shops-row.owl-carousel .owl-nav .owl-next {
+  right: 12px;
+}
+
+#shops .shops-row.owl-carousel .owl-nav button:hover {
+  transform: translateY(-50%) translateY(-2px);
+  background: rgba(255, 122, 0, 0.08);
+  border-color: rgba(255, 122, 0, 0.32);
+  box-shadow: 0 18px 34px rgba(17, 24, 39, 0.14);
+}
+
+#shops .shops-row.owl-carousel .owl-nav button span {
+  font-size: 28px;
+  line-height: 1;
+  display: inline-block;
+  transform: translateY(-1px);
+  color: rgba(17, 24, 39, 0.85);
+}
+
+#shops .shops-row.owl-carousel .owl-nav button.disabled {
+  opacity: 0.35;
+}
+
+/* dots */
+#shops .owl-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+#shops .owl-dot span {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(17, 24, 39, 0.18);
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    opacity 0.18s ease;
+  opacity: 0.8;
+}
+#shops .owl-dot.active span {
+  background: rgba(255, 122, 0, 0.9);
+  transform: scale(1.25);
+  opacity: 1;
+}
+
+/* CTA button in shops */
+#shops .btn-catalog {
+  margin-top: 20px;
+  border-radius: 999px !important;
+  padding: 14px 22px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.2px;
+
+  border: none !important;
+  color: #fff !important;
+  background: linear-gradient(
+    180deg,
+    var(--brand-orange-light),
+    var(--brand-orange)
+  ) !important;
+
+  box-shadow: 0 16px 34px rgba(255, 122, 0, 0.35);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    filter 0.18s ease;
+}
+#shops .btn-catalog:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(
+    180deg,
+    var(--brand-orange),
+    var(--brand-orange-dark)
+  ) !important;
+  box-shadow: 0 22px 44px rgba(255, 122, 0, 0.45);
+  filter: brightness(1.02);
+}
+
+/* =========================
+   FORM (В ПЕРВЫЙ РАЗ ПОКУПАЕТЕ?)
+   ========================= */
+#form {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      900px 420px at 10% 10%,
+      rgba(255, 122, 0, 0.08),
+      transparent 55%
+    ),
+    radial-gradient(
+      900px 420px at 90% 30%,
+      rgba(255, 154, 61, 0.06),
+      transparent 58%
+    ),
+    linear-gradient(180deg, #ffffff 0%, #fbfbfb 100%);
+  border-top: 1px solid rgba(17, 24, 39, 0.06);
+}
+
+/* make row look like container */
+#form .row {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+/* left image */
+#form .image {
+  min-height: 430px;
+  border-radius: 26px;
+  border: 1px solid rgba(255, 122, 0, 0.18);
+  box-shadow: 0 24px 46px rgba(17, 24, 39, 0.08);
+  position: relative;
+  overflow: hidden;
+
+  background:
+    url("first_time.png") center / contain no-repeat,
+    radial-gradient(
+      160px 160px at 25% 25%,
+      rgba(255, 122, 0, 0.18),
+      transparent 60%
+    ),
+    radial-gradient(
+      240px 240px at 75% 70%,
+      rgba(255, 154, 61, 0.14),
+      transparent 65%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.92),
+      rgba(255, 247, 237, 0.95)
+    );
+}
+
+#form .image::after {
+  content: "";
+  position: absolute;
+  right: -120px;
+  bottom: -120px;
+  width: 340px;
+  height: 340px;
+  border-radius: 999px;
+  background: radial-gradient(
+    circle at 35% 35%,
+    rgba(255, 122, 0, 0.18),
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+/* right card */
+#form .forma {
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  box-shadow: 0 24px 46px rgba(17, 24, 39, 0.08);
+  padding: 28px 28px;
+}
+
+#form .forma h2 {
+  font-weight: 900;
+  letter-spacing: -0.3px;
+  font-size: 34px;
+  margin-bottom: 10px;
+}
+
+#form .forma p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+#form #HomeOneForm {
+  display: grid;
+}
+
+/* labels — мягкие, без подчеркиваний */
+#form #HomeOneForm label {
+  margin: 10px 0 4px;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(17, 24, 39, 0.75);
+  letter-spacing: 0.2px;
+  text-decoration: none !important;
+}
+
+/* inputs */
+#form #HomeOneForm input[type="text"],
+#form #HomeOneForm input[type="email"] {
+  width: 100%;
+  height: 48px;
+  border-radius: 14px;
+  border: 1px solid rgba(17, 24, 39, 0.14);
+  background: #fff;
+  padding: 0 14px;
+  outline: none;
+  transition:
+    box-shadow 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease;
+  box-shadow: 0 8px 18px rgba(17, 24, 39, 0.04);
+}
+
+#form #HomeOneForm input::placeholder {
+  color: rgba(107, 114, 128, 0.85);
+  font-weight: 600;
+}
+
+#form #HomeOneForm input[type="text"]:focus,
+#form #HomeOneForm input[type="email"]:focus {
+  border-color: rgba(255, 122, 0, 0.55);
+  box-shadow: 0 0 0 4px rgba(255, 122, 0, 0.14);
+  transform: translateY(-1px);
+}
+
+/* submit */
+#form #HomeOneForm input[type="submit"] {
+  height: 52px;
+  border-radius: 999px !important;
+  border: none !important;
+  background: linear-gradient(
+    180deg,
+    var(--brand-orange-light),
+    var(--brand-orange)
+  ) !important;
+  color: #fff !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.2px;
+  box-shadow: 0 16px 34px rgba(255, 122, 0, 0.35);
+  margin-top: 10px;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    filter 0.18s ease;
+}
+
+#form #HomeOneForm input[type="submit"]:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(
+    180deg,
+    var(--brand-orange),
+    var(--brand-orange-dark)
+  ) !important;
+  box-shadow: 0 22px 44px rgba(255, 122, 0, 0.45);
+  filter: brightness(1.02);
 }
 
 /* =========================
@@ -691,14 +1071,8 @@ a {
   .site-header .header-btn {
     padding: 8px 10px !important;
   }
-}
-
-@media (max-width: 1100px) {
-  .header-menu {
-    gap: 6px 8px;
-  }
-  .header-right {
-    gap: 6px;
+  #shops .item-cat a {
+    grid-template-rows: 220px auto;
   }
 }
 
@@ -715,19 +1089,20 @@ a {
     justify-content: flex-start;
     padding-top: 6px;
   }
+  .header-menu .dropdown-toggle::before {
+    right: 0;
+  }
+
   .site-header .offer p {
     font-size: 22px;
   }
 
-  .site-header::before {
-    right: -260px;
-    top: 220px;
-    width: 520px;
-    height: 520px;
+  #about-privoz .about-block {
+    padding: 28px 26px;
   }
-
-  #news-block {
-    padding: 38px 0;
+  #about-privoz h2,
+  #shops h2 {
+    font-size: 28px;
   }
 
   .news-badge {
@@ -743,10 +1118,63 @@ a {
   .news-badge span {
     font-size: 16px;
   }
+
+  #shops .item-cat a {
+    grid-template-rows: 210px auto;
+  }
+  #shops .shops-row:not(.owl-carousel) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #shops .shops-row.owl-carousel .owl-nav .owl-prev {
+    left: 8px;
+  }
+  #shops .shops-row.owl-carousel .owl-nav .owl-next {
+    right: 8px;
+  }
+
+  #form .image {
+    min-height: 280px;
+    margin-bottom: 14px;
+    background-size: contain;
+  }
+  #form .forma {
+    padding: 22px 18px;
+  }
+  #form .forma h2 {
+    font-size: 28px;
+  }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 576px) {
   .site-header .offer .cabinetIn {
     margin: 5px 0;
+  }
+
+  #about-privoz .about-block {
+    padding: 22px 18px;
+    border-radius: 20px;
+  }
+
+  #about-privoz h2,
+  #shops h2 {
+    font-size: 24px;
+  }
+
+  #shops .item-cat a {
+    grid-template-rows: 200px auto;
+  }
+  #shops .shops-row:not(.owl-carousel) {
+    grid-template-columns: 1fr;
+  }
+
+  #shops .shops-row.owl-carousel .owl-nav button {
+    opacity: 0.92;
+    width: 42px;
+    height: 42px;
+  }
+
+  #form .image {
+    min-height: 240px;
   }
 }
