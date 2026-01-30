@@ -1178,3 +1178,250 @@ a {
     min-height: 240px;
   }
 }
+
+/* =========================
+   USLUGI PRIVOZ (clean)
+   Подключать ПОСЛЕ основного style.css
+   ========================= */
+
+#uslugi {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      900px 420px at 12% 15%,
+      rgba(255, 122, 0, 0.08),
+      transparent 55%
+    ),
+    radial-gradient(
+      900px 420px at 88% 30%,
+      rgba(255, 154, 61, 0.06),
+      transparent 58%
+    ),
+    linear-gradient(180deg, #ffffff 0%, #fbfbfb 100%);
+  border-top: 1px solid rgba(17, 24, 39, 0.06);
+}
+
+/* Заголовок */
+#uslugi h2 {
+  font-weight: 900;
+  font-size: 34px;
+  letter-spacing: -0.3px;
+  margin-bottom: 14px;
+  color: #111827;
+}
+
+#uslugi h2::after {
+  content: "";
+  display: block;
+  width: 76px;
+  height: 4px;
+  border-radius: 999px;
+  margin-top: 14px;
+  background: linear-gradient(90deg, #ff9a3d, #ff5f00);
+}
+
+/* Карточка */
+#uslugi .usluga {
+  margin-bottom: 24px;
+}
+
+#uslugi .usluga > .row {
+  position: relative;
+  height: 100%;
+  margin: 0;
+  padding: 22px;
+  border-radius: 26px;
+  background: #ffffff;
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  box-shadow: 0 18px 40px rgba(17, 24, 39, 0.08);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+#uslugi .usluga > .row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 18px;
+  bottom: 18px;
+  width: 4px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ff9a3d, #ff5f00);
+}
+
+#uslugi .usluga:hover > .row {
+  transform: translateY(-4px);
+  box-shadow: 0 28px 60px rgba(17, 24, 39, 0.12);
+  border-color: rgba(255, 122, 0, 0.25);
+}
+
+/* Колонка иконки */
+#uslugi .usluga .col-xl-3,
+#uslugi .usluga .col-lg-3,
+#uslugi .usluga .col-md-4 {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Бейдж иконки */
+#uslugi .usluga-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  background: rgba(255, 122, 0, 0.1);
+  border: 1px solid rgba(255, 122, 0, 0.18);
+  box-shadow: 0 10px 22px rgba(17, 24, 39, 0.08);
+  display: grid;
+  place-items: center;
+  position: relative;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+#uslugi .usluga:hover .usluga-icon {
+  transform: translateY(-2px);
+  background: rgba(255, 122, 0, 0.14);
+  border-color: rgba(255, 122, 0, 0.26);
+  box-shadow: 0 16px 30px rgba(17, 24, 39, 0.12);
+}
+
+/* SVG размер (фиксируем как на скрине) */
+#uslugi .usluga-icon svg {
+  width: 40px !important;
+  height: 40px !important;
+  display: block !important;
+  max-width: none !important;
+  max-height: none !important;
+  transform: none !important; /* убираем все scale-конфликты */
+}
+
+/* Линии SVG */
+#uslugi .stroke {
+  fill: none;
+  stroke: rgba(17, 24, 39, 0.86);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 0.25s ease;
+}
+
+/* Для “%” лучше чуть тоньше, чтобы не было жирно */
+#uslugi .icon-vat .stroke {
+  stroke-width: 3.2;
+}
+
+/* Hover цвет */
+#uslugi .usluga:hover .stroke {
+  stroke: rgba(255, 95, 0, 0.95);
+}
+
+/* Текст */
+#uslugi .usluga h5 {
+  margin: 4px 0 10px;
+  font-size: 18px;
+  font-weight: 900;
+  color: #111827;
+}
+
+#uslugi .usluga p {
+  margin: 0 0 10px;
+  color: #374151;
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+/* Анимации (как было по стилю блока) */
+#uslugi .icon-search {
+  transform-origin: 50% 50%;
+  animation: uslugi-breathe 2.6s ease-in-out infinite;
+}
+#uslugi .icon-truck {
+  transform-origin: 50% 70%;
+  animation: uslugi-truck 3s ease-in-out infinite;
+}
+#uslugi .icon-vat {
+  transform-origin: 50% 50%;
+  animation: uslugi-pulse 2.8s ease-in-out infinite;
+}
+
+@keyframes uslugi-breathe {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes uslugi-truck {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes uslugi-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #uslugi .icon-search,
+  #uslugi .icon-truck,
+  #uslugi .icon-vat {
+    animation: none !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 992px) {
+  #uslugi h2 {
+    font-size: 28px;
+  }
+  #uslugi .usluga-icon {
+    width: 60px;
+    height: 60px;
+  }
+  #uslugi .usluga-icon svg {
+    width: 36px !important;
+    height: 36px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  #uslugi h2 {
+    font-size: 24px;
+  }
+  #uslugi .usluga > .row {
+    padding: 16px 14px;
+    border-radius: 22px;
+  }
+  #uslugi .usluga-icon {
+    width: 56px;
+    height: 56px;
+  }
+  #uslugi .usluga-icon svg {
+    width: 34px !important;
+    height: 34px !important;
+  }
+}
